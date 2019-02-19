@@ -1,0 +1,23 @@
+{
+  "name": "graphql-cinta-negra",
+  "version": "1.0.0",
+  "description": "Este es la API en Graphql de Cinta Negra",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gerardo Arjona",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "cloudinary": "^1.13.2",
+    "dotenv": "^6.2.0",
+    "graphql-import": "^0.7.1",
+    "graphql-tools": "^4.0.4",
+    "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.13",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10"
+  }
+}
