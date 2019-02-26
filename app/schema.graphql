@@ -1,3 +1,5 @@
+scalar Upload
+
 type Query{
     prueba:String
     Users:[User]
@@ -9,6 +11,7 @@ type Mutation{
     login(email:String!, password:String!):Auth
     createPost(data:PostCreateInput!):Post
     deleteUser(id:ID!):User
+    updateUser(id:ID!, data:UserCreateInput!):User
 }
 
 type Auth{
@@ -47,6 +50,7 @@ input UserCreateInput{
     password:String!
     birth_date:String
     gender:GENDER
+    profile_image:Upload
 }
 
 input PostCreateInput{

@@ -1,4 +1,7 @@
 const User = require("../models/Users");
+const { hashPassword } = require("../utils");
+
+const SALT_FACTOR = 10;
 
 const createUser = (data) => {
     return User.create(data);
@@ -24,6 +27,15 @@ const deleteUserById = (id) => {
     return User.findByIdAndUpdate({_id:id, is_active:true}, {$set:{is_active:false}}, {new:true} )
 }
 
+const updateUserById = (id, data) => {
+    return hashPassword(data.password, SALT_FACTOR)
+        .then(hash => {
+            data.password = hash
+            return User.findByIdAndUpdate(id, {$set: data}, {new: true}).select("-password")
+        })
+        .catch(e => e)
+}
+
 module.exports ={
 
     createUser,
@@ -31,6 +43,7 @@ module.exports ={
     addPostToUser,
     getUserById,
     getAllUsers,
-    deleteUserById
+    deleteUserById,
+    updateUserById
 
 }

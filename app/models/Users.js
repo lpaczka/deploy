@@ -53,6 +53,7 @@ const UserSchema = new Schema({
 
 UserSchema.pre("save", function(next){
     let user = this;
+
     if(!user.isModified("password")) { return next(); }
     brcypt.genSalt(SALT_FACTOR, function(err, salt){
         if(err) return next(err);

@@ -3,10 +3,10 @@ const { getUserId } = require("../utils");
 const { storeUpload } = require("../utils");
 
 const signup = async (_, args, context, info) => {
-    // const { createReadStream } = await args.data.profile_image;
-    // const stream = createReadStream();
-    // const { url } = await storeUpload(stream);
-    // args.data.profile_image = url;
+    const { createReadStream } = await args.data.profile_image;
+    const stream = createReadStream();
+    const { url } = await storeUpload(stream);
+    args.data.profile_image = url;
 
     return actions.signup(args.data).then(
         token => { return {"message":"User created successfully", token: token}; }
@@ -38,9 +38,19 @@ const deleteUser = (_, args, context, info) => {
     }).catch(e => e)
 }
 
+const updateUser = (_, args, context, info) => {
+    return actions.updateUserById(args.id, args.data).then((user)=>{
+        if(!user) throw new Error("User does not exist");
+        return user
+    }).catch( e => e);
+}
+
+//const updatePost = ()
+
 module.exports = {
     signup,
     login,
     createPost, 
-    deleteUser
+    deleteUser,
+    updateUser
 }
