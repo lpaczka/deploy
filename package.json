@@ -4,7 +4,7 @@
   "description": "Este es la API en Graphql de Cinta Negra",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "nodemon app/app.js",
     "watch": "nodemon -e js,graphql --exec 'npm run lint & npm start'",
     "lint": "eslint app/"
