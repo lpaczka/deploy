@@ -4,7 +4,7 @@
   "description": "Este es la API en Graphql de Cinta Negra",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "nodemon app/app.js",
     "watch": "nodemon -e js,graphql --exec 'npm run lint & npm start'",
     "lint": "eslint app/"
@@ -21,12 +21,13 @@
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.4",
     "graphql-yoga": "^1.17.4",
+    "jest": "^24.1.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.13",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10"
   },
-  "devDependencies":{
+  "devDependencies": {
     "eslint": "^5.14.1",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-security": "^1.4.0"
